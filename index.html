@@ -55,20 +55,18 @@
         <!-- Негізгі Контент -->
         <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
             
-            <!-- Сол жақ: Форма / Параметрлер -->
+            <!-- Сол жақ: Форма -->
             <section class="lg:col-span-4 space-y-5 no-print">
                 <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
                     <h2 class="text-base font-semibold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
                         <i class="fa-solid fa-[#16a34a] fa-sliders"></i> Сабақ параметрлері
                     </h2>
 
-                    <!-- Пән -->
                     <div>
                         <label class="block text-xs font-medium text-slate-700 mb-1">Пән</label>
-                        <input type="text" id="subjectInput" value="Биология" placeholder="Мысалы: Химия, Қазақ тілі, Физика, Математика" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none">
+                        <input type="text" id="subjectInput" value="Биология" placeholder="Мысалы: Химия, Қазақ тілі, Физика" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 outline-none">
                     </div>
 
-                    <!-- Сынып -->
                     <div class="grid grid-cols-2 gap-3">
                         <div>
                             <label class="block text-xs font-medium text-slate-700 mb-1">Сынып</label>
@@ -84,75 +82,67 @@
                         </div>
                         <div>
                             <label class="block text-xs font-medium text-slate-700 mb-1">Бөлiм</label>
-                            <input type="text" id="unitInput" value="Молекулалық биология" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none">
+                            <input type="text" id="unitInput" value="Өсімдіктер физиологиясы" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none">
                         </div>
                     </div>
 
-                    <!-- Сабақ тақырыбы -->
                     <div>
                         <label class="block text-xs font-medium text-slate-700 mb-1">Сабақ тақырыбы</label>
-                        <input type="text" id="topicInput" value="Нәруыздардың құрылымы мен қызметтері" placeholder="Сабақ тақырыбын енгізіңіз" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+                        <input type="text" id="topicInput" value="Фотосинтез процесі" placeholder="Сабақ тақырыбын енгізіңіз" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 outline-none">
                     </div>
 
-                    <!-- Оқу мақсаттары -->
                     <div>
-                        <label class="block text-xs font-medium text-slate-700 mb-1">Оқу мақсаты (Бағдарламадан)</label>
-                        <textarea id="objectiveInput" rows="2" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none">10.5.1.2 нәруыздардың біріншілік, екіншілік, үшіншілік және төртіншілік құрылымдарын сипаттау</textarea>
+                        <label class="block text-xs font-medium text-slate-700 mb-1">Оқу мақсаты</label>
+                        <textarea id="objectiveInput" rows="2" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none">10.1.2.1 Фотосинтездің жарық және қараңғы кезеңдерін сипаттау</textarea>
                     </div>
 
-                    <!-- ЕБҚ Оқушы параметрлері -->
                     <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 space-y-2">
                         <label class="flex items-center text-xs font-semibold text-amber-900 cursor-pointer">
                             <input type="checkbox" id="senToggle" checked class="rounded text-amber-600 focus:ring-amber-500 mr-2">
                             ЕБҚ (Ерекше білім беру қажеттілігі) тапсырмаларын қосу
                         </label>
-                        <p class="text-[11px] text-amber-700">ЕБҚ оқушыларына бөлек 10 баллдық жүйеге негізделген жеңілдетілген тапсырмалар дайындалады.</p>
+                        <p class="text-[11px] text-amber-700">ЕБҚ оқушыларына бөлек 10 баллдық жүйеде бейімделген тапсырмалар дайындалады.</p>
                     </div>
 
-                    <!-- ЖИ генерация батырмасы -->
                     <button id="generateBtn" onclick="generateLessonPlan()" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg text-sm transition shadow flex items-center justify-center gap-2">
                         <i class="fa-solid fa-wand-magic-sparkles"></i> ҚМЖ Генерациялау
                     </button>
                 </div>
             </section>
 
-            <!-- Оң жақ: ҚМЖ Нәтижесі (Басып шығару аймағы) -->
+            <!-- Оң жақ: ҚМЖ Нәтижесі -->
             <section class="lg:col-span-8 bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-sm print-container space-y-6" id="printableArea">
-                <!-- Жоспар Header -->
                 <div class="border-b border-slate-200 pb-4 flex justify-between items-start">
                     <div>
                         <span class="inline-block px-2.5 py-0.5 rounded text-xs font-bold bg-brand-50 text-brand-700 mb-1">ҚЫСҚА МЕРЗІМДІ САБАҚ ЖОСПАРЫ</span>
-                        <h2 id="outTopic" class="text-xl font-bold text-slate-900">Нәруыздардың құрылымы мен қызметтері</h2>
-                        <p id="outMeta" class="text-xs text-slate-500 mt-1">Пән: <span id="outSubject">Биология</span> | Сынып: <span id="outGrade">10</span> | Бөлім: <span id="outUnit">Молекулалық биология</span></p>
+                        <h2 id="outTopic" class="text-xl font-bold text-slate-900">Фотосинтез процесі</h2>
+                        <p id="outMeta" class="text-xs text-slate-500 mt-1">Пән: <span id="outSubject">Биология</span> | Сынып: <span id="outGrade">10</span> | Бөлім: <span id="outUnit">Өсімдіктер физиологиясы</span></p>
                     </div>
                 </div>
 
-                <!-- Негізгі Метамәліметтер Кестесі -->
                 <table class="w-full text-xs border-collapse border border-slate-300">
                     <tbody>
                         <tr class="border-b border-slate-300">
                             <td class="p-2 bg-slate-50 font-semibold border-r border-slate-300 w-1/4">Оқу мақсаты:</td>
-                            <td id="outObjective" class="p-2" colspan="3">10.5.1.2 нәруыздардың біріншілік, екіншілік, үшіншілік және төртіншілік құрылымдарын сипаттау</td>
+                            <td id="outObjective" class="p-2" colspan="3">10.1.2.1 Фотосинтездің жарық және қараңғы кезеңдерін сипаттау</td>
                         </tr>
                         <tr class="border-b border-slate-300">
                             <td class="p-2 bg-slate-50 font-semibold border-r border-slate-300">Сабақ мақсаты:</td>
-                            <td id="outLessonGoal" class="p-2" colspan="3">Нәруыздардың төрт түрлі құрылымдық деңгейлерін ажыратады, байланыстар түрлерін талдайды және қызметтерімен байланысын түсіндіреді.</td>
+                            <td id="outLessonGoal" class="p-2" colspan="3">Фотосинтез процесі бойынша негізгі ұғымдарды меңгереді, заңдылықтарды талдайды және алған білімді практикада қолданады.</td>
                         </tr>
                         <tr>
                             <td class="p-2 bg-slate-50 font-semibold border-r border-slate-300">Бағалау критерийі:</td>
-                            <td id="outCriteria" class="p-2" colspan="3">Нәруыз құрылымдарын дұрыс анықтайды; Байланыс түрлерін салыстырады; Функцияларымен сәйкестендіреді.</td>
+                            <td id="outCriteria" class="p-2" colspan="3">Фотосинтез процесі бойынша негізгі терминдерді анықтайды; Тапсырмаларды дұрыс орындайды; Қорытынды жасайды.</td>
                         </tr>
                     </tbody>
                 </table>
 
-                <!-- Бағалау жүйесі туралы ескертпе -->
                 <div class="flex items-center justify-between bg-slate-50 p-2.5 rounded border border-slate-200 text-xs text-slate-600">
                     <span class="font-medium"><i class="fa-solid fa-star text-amber-500"></i> Жалпы оқушылар: <strong>10 балл</strong></span>
                     <span class="font-medium text-amber-700"><i class="fa-solid fa-heart text-amber-600"></i> ЕБҚ оқушылары: <strong>Бөлек 10 балл</strong></span>
                     <span class="font-medium text-emerald-700"><i class="fa-solid fa-robot"></i> ЖИ қолданылуы: <strong>Сабақта 2 рет</strong></span>
                 </div>
 
-                <!-- ҚМЖ Таблицасы -->
                 <div class="overflow-x-auto">
                     <table class="w-full text-xs border-collapse border border-slate-300">
                         <thead>
@@ -165,7 +155,6 @@
                             </tr>
                         </thead>
                         <tbody id="planTableBody">
-                            <!-- Сабақ жоспарының бағандары Javascript арқылы жүктеледі -->
                         </tbody>
                     </table>
                 </div>
@@ -180,7 +169,7 @@
                 <i class="fa-solid fa-key text-brand-600"></i> Gemini API Кілтін енгізу
             </h3>
             <p class="text-xs text-slate-600">
-                Google Gemini API кілтін салсаңыз, кез келген пәнге ЖИ негізінде сапалы ҚМЖ генерацияланады. Кілтіңіз болмаса, жергілікті әмбебап генератор жұмыс істей береді.
+                Google Gemini API кілтін салсаңыз, ЖИ кез келген тақырыпқа тереңдетілген ҚМЖ дайындайды.
             </p>
             <input type="password" id="apiKeyInput" placeholder="AIzaSy..." class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:ring-2 focus:ring-brand-500">
             <div class="flex justify-end space-x-2 pt-2">
@@ -220,41 +209,40 @@
             }
         }
 
-        // Әмбебап жергілікті генератор (Fallback Generator - Барлық пәндерге сәйкес)
         function generateFallbackPlan(subject, topic, objective, hasSen) {
             return [
                 {
                     stage: "Ұйымдастыру кезеңі (0-5 мин)",
-                    teacher: `Оқушылармен амандасу, қатысымды тексеру. "${subject}" пәні бойынша өткен сабақ пен жаңа сабақ арасындағы байланысты орнату үшін «Миға шабуыл» сұрақтарын қояды.`,
-                    student: `Оқушылар амандасады, сұрақтарға жауап беріп, сабақ тақырыбы мен мақсатын болжайды.`,
+                    teacher: `Оқушылармен амандасу. "${subject}" пәні бойынша өткен сабақ пен жаңа сабақ арасындағы байланысты орнату үшін «Миға шабуыл» сұрақтарын қояды.`,
+                    student: `Оқушылар сұрақтарға жауап беріп, сабақ тақырыбы мен мақсатын болжайды.`,
                     eval: `Қалыптастырушы бағалау: Мадақтау, ауызша кері байланыс.`,
                     resources: `Презентация, тақта.`
                 },
                 {
                     stage: "Сабақтың басы / Жаңа білім (5-15 мин)",
-                    teacher: `Жаңа материалды түсіндіру: "${topic}" тақырыбы бойынша негізгі ұғымдар мен заңдылықтарды таныстырады. <br><br><span class="inline-block bg-emerald-100 text-emerald-800 text-[10px] font-semibold px-1.5 py-0.5 rounded">🤖 ЖИ қолдану 1:</span> Мұғалім ЖИ көмегімен дайындалған интерактивті визуализацияны/схеманы көрсетеді.`,
-                    student: `<strong>1-Тапсырма (Пәндік диктант / Терминология):</strong> Оқушылар негізгі терминдерді анықтамасымен сәйкестендіреді немесе бос орындарды толтырады.<br><br>${hasSen ? '<div class="mt-1 p-1.5 bg-amber-50 rounded border border-amber-200"><strong>ЕБҚ Оқушы тапсырмасы:</strong> Дайын терминдер тізімінен қажетті сөздерді таңдап қояды.</div>' : ''}`,
+                    teacher: `Жаңа материалды түсіндіру: "${topic}" тақырыбы бойынша негізгі ұғымдар мен заңдылықтарды таныстырады. <br><br><span class="inline-block bg-emerald-100 text-emerald-800 text-[10px] font-semibold px-1.5 py-0.5 rounded">🤖 ЖИ қолдану 1:</span> Мұғалім ЖИ көмегімен дайындалған интерактивті визуализацияны көрсетеді.`,
+                    student: `<strong>1-Тапсырма (Пәндік диктант / Терминология):</strong> Оқушылар негізгі терминдерді анықтамасымен сәйкестендіреді.<br><br>${hasSen ? '<div class="mt-1 p-1.5 bg-amber-50 rounded border border-amber-200"><strong>ЕБҚ Оқушы тапсырмасы:</strong> Дайын терминдер тізімінен қажетті сөздерді таңдап қояды.</div>' : ''}`,
                     eval: `<strong>Жалпы оқушылар: 3 балл</strong><br>- Терминдерді дұрыс табады (2б)<br>- Ұғымдарды сипаттайды (1б)<br><br>${hasSen ? '<strong>ЕБҚ Оқушысы: 3 балл</strong><br>- Сөздерді орнына дұрыс қояды (3б)' : ''}`,
-                    resources: `ЖИ генерациялаған модельдер, үлестірмелі парақшалар.`
+                    resources: `ЖИ модельдері, үлестірмелі парақшалар.`
                 },
                 {
                     stage: "Сабақтың ортасы / Практика (15-32 мин)",
                     teacher: `Топтық және жеке жұмысты ұйымдастырады. Тапсырмаларды орындау тәртібі мен критерийлерін түсіндіреді.`,
-                    student: `<strong>2-Тапсырма («ИӘ-ЖОҚ» концептуалды тесті & Салыстырмалы кесте):</strong> Оқушылар ұсынылған тұжырымдардың шындық/жалғандығын анықтайды және тақырыптық талдау жасайды.<br><br>${hasSen ? '<div class="mt-1 p-1.5 bg-amber-50 rounded border border-amber-200"><strong>ЕБҚ Оқушы тапсырмасы:</strong> Көрнекі суреттер немесе схемалар арқылы 2 негізгі айырмашылықты белгілейді.</div>' : ''}`,
-                    eval: `<strong>Жалпы оқушылар: 4 балл</strong><br>- Тұжырымдарды дұрыс талдайды (2б)<br>- Кестені толық толтырады (2б)<br><br>${hasSen ? '<strong>ЕБҚ Оқушысы: 4 балл</strong><br>- Суреттерден белгілерді дұрыс табады (4б)' : ''}`,
+                    student: `<strong>2-Тапсырма («ИӘ-ЖОҚ» концептуалды тесті):</strong> "${topic}" тақырыбына қатысты тұжырымдардың шындық/жалғандығын анықтайды.<br><br>${hasSen ? '<div class="mt-1 p-1.5 bg-amber-50 rounded border border-amber-200"><strong>ЕБҚ Оқушы тапсырмасы:</strong> Көрнекі суреттер арқылы 2 негізгі айырмашылықты белгілейді.</div>' : ''}`,
+                    eval: `<strong>Жалпы оқушылар: 4 балл</strong><br>- Тұжырымдарды дұрыс талдайды (2б)<br>- Кестені толық толтырады (2б)<br><br>${hasSen ? '<strong>ЕБҚ Оқушысы: 4 балл</strong><br>- Белгілерді дұрыс табады (4б)' : ''}`,
                     resources: `Тапсырма парақшалары, семантикалық карта.`
                 },
                 {
                     stage: "Сабақты бекіту (32-40 мин)",
-                    teacher: `Білімді бекіту үшін жинақтау тапсырмасын береді. <br><br><span class="inline-block bg-emerald-100 text-emerald-800 text-[10px] font-semibold px-1.5 py-0.5 rounded">🤖 ЖИ қолдану 2:</span> Мұғалім ЖИ көмегімен жасалған «Идеяларды жинақтау» немесе жедел викторина сұрақтарын экранында көрсетеді.`,
-                    student: `<strong>3-Тапсырма (Семантикалық карта / Есеп/ Талдау):</strong> Алған білімдерін қолданып, қорытынды тапсырманы орындайды.<br><br>${hasSen ? '<div class="mt-1 p-1.5 bg-amber-50 rounded border border-amber-200"><strong>ЕБҚ Оқушы тапсырмасы:</strong> Үлгіге қарай отырып, 1 сұраққа жауап береді.</div>' : ''}`,
+                    teacher: `Білімді бекіту үшін жинақтау тапсырмасын береді. <br><br><span class="inline-block bg-emerald-100 text-emerald-800 text-[10px] font-semibold px-1.5 py-0.5 rounded">🤖 ЖИ қолдану 2:</span> Мұғалім ЖИ көмегімен жасалған жедел викторина сұрақтарын ұсынады.`,
+                    student: `<strong>3-Тапсырма (Қорытынды талдау):</strong> Алған білімдерін қолданып, қорытынды тапсырманы орындайды.<br><br>${hasSen ? '<div class="mt-1 p-1.5 bg-amber-50 rounded border border-amber-200"><strong>ЕБҚ Оқушы тапсырмасы:</strong> Үлгіге қарай отырып, 1 сұраққа жауап береді.</div>' : ''}`,
                     eval: `<strong>Жалпы оқушылар: 3 балл</strong><br>- Себеп-салдарды негіздейді (3б)<br><br>${hasSen ? '<strong>ЕБҚ Оқушысы: 3 балл</strong><br>- Сұраққа дұрыс жауап береді (3б)' : ''}`,
                     resources: `Интерактивті экран, ЖИ викторинасы.`
                 },
                 {
                     stage: "Кері байланыс & Рефлексия (40-45 мин)",
-                    teacher: `Сабақты қорытындылайды. Оқушылардың 10 баллдық бағалау көрсеткіштерін (ЕБҚ оқушыларынікін де бөлек) жинақтайды. Үй тапсырмасын береді.`,
-                    student: `«Нысана» немесе «3-2-1» әдісі арқылы сабақ бойынша рефлексия жасайды. Б жинаған баллдарын есептейді.`,
+                    teacher: `Сабақты қорытындылайды. Оқушылардың 10 баллдық көрсеткіштерін (ЕБҚ оқушыларынікін де бөлек) жинақтайды.`,
+                    student: `«3-2-1» әдісі арқылы сабақ бойынша рефлексия жасайды. Жинаған баллдарын есептейді.`,
                     eval: `Формативті бағалау: Жалпы max 10 балл / ЕБҚ max 10 балл.`,
                     resources: `Рефлексия парақшалары.`
                 }
@@ -269,12 +257,16 @@
             const objective = document.getElementById('objectiveInput').value;
             const hasSen = document.getElementById('senToggle').checked;
 
-            // UI-ды жаңарту
+            // UI-ды динамикалық түрде толық жаңарту
             document.getElementById('outSubject').textContent = subject;
             document.getElementById('outGrade').textContent = grade;
             document.getElementById('outUnit').textContent = unit;
             document.getElementById('outTopic').textContent = topic;
             document.getElementById('outObjective').textContent = objective;
+
+            // Сабақ мақсаты мен бағалау критерийлерін де тақырыпқа сәйкес өзгерту:
+            document.getElementById('outLessonGoal').textContent = `${topic} бойынша негізгі ұғымдарды меңгереді, заңдылықтарды талдайды және алған білімді практикада қолданады.`;
+            document.getElementById('outCriteria').textContent = `${topic} бойынша негізгі терминдерді анықтайды; Тапсырмаларды дұрыс орындайды; Қорытынды жасайды.`;
 
             const btn = document.getElementById('generateBtn');
             btn.disabled = true;
@@ -284,7 +276,7 @@
 
             if (GEMINI_API_KEY) {
                 try {
-                    const prompt = `Сіз сарапшы мұғалімсіз. Мына параметрлер бойынша ҚМЖ (Қысқа мерзімді сабақ жоспары) құрастырыңыз:
+                    const prompt = `Сіз сарапшы мұғалімсіз. Мына параметрлер бойынша ҚМЖ құрастырыңыз:
 Пән: ${subject}
 Сынып: ${grade}
 Бөлім: ${unit}
@@ -294,20 +286,24 @@
 
 ТАЛАПТАР:
 1. Бағалау жүйесі: Жалпы оқушыларға сабақ бойы ДӘЛ 10 балл болатын дескрипторлар құрастырыңыз.
-2. Егер ЕБҚ қосылса: ЕБҚ (Ерекше білім беру қажеттілігі бар) оқушыларына БӨЛЕК 10 баллдық жүйеде бейімделген тапсырмалар мен дескрипторлар жазыңыз.
-3. ЖИ (AI) құралдарын сабақта тек 2 РЕТ (мысалы, сабақ ортасы мен бекіту кезеңінде) тиімді қолдануды көрсетіңіз.
-4. Оқушы әрекетінде әртүрлі тапсырма форматтарын (Пәндік диктант, ИӘ-ЖОҚ тесті, Семантикалық карта, сәйкестендіру т.б.) жазыңыз.
+2. Егер ЕБҚ қосылса: ЕБҚ оқушыларына БӨЛЕК 10 баллдық жүйеде бейімделген тапсырмалар жазыңыз.
+3. ЖИ (AI) құралдарын сабақта тек 2 РЕТ қолдануды көрсетіңіз.
+4. "lessonGoal" (Сабақ мақсаты) мен "criteria" (Бағалау критерийі) өрістерін осы тақырыпқа дәл сәйкестендіріп жазыңыз.
 
-JSON форматында қатаң түрде жауап беріңіз. Структурасы:
-[
-  {
-    "stage": "Кезең аты",
-    "teacher": "Мұғалім әрекеті",
-    "student": "Оқушы әрекеті мен тапсырмалар",
-    "eval": "Бағалау және дескрипторлар (10 балл жүйесі)",
-    "resources": "Ресурстар және ЖИ құралдары"
-  }
-]`;
+JSON форматы:
+{
+  "lessonGoal": "Тақырыпқа сай сабақ мақсаты",
+  "criteria": "Тақырыпқа сай бағалау критерийлері",
+  "plan": [
+    {
+      "stage": "Кезең аты",
+      "teacher": "Мұғалім әрекеті",
+      "student": "Оқушы әрекеті мен тапсырмалар",
+      "eval": "Бағалау және дескрипторлар (10 балл)",
+      "resources": "Ресурстар және ЖИ"
+    }
+  ]
+}`;
 
                     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
                         method: 'POST',
@@ -319,10 +315,11 @@ JSON форматында қатаң түрде жауап беріңіз. Ст�
                     });
 
                     const data = await response.json();
-                    const text = data.candidates[0].content.parts[0].text;
-                    planData = JSON.parse(text);
+                    const parsed = JSON.parse(data.candidates[0].content.parts[0].text);
+                    if(parsed.lessonGoal) document.getElementById('outLessonGoal').textContent = parsed.lessonGoal;
+                    if(parsed.criteria) document.getElementById('outCriteria').textContent = parsed.criteria;
+                    planData = parsed.plan || parsed;
                 } catch (err) {
-                    console.warn("Gemini API қатесі, жергілікті генератор іске қосылды:", err);
                     planData = generateFallbackPlan(subject, topic, objective, hasSen);
                 }
             } else {
@@ -353,7 +350,6 @@ JSON форматында қатаң түрде жауап беріңіз. Ст�
             });
         }
 
-        // Бастапқы іске қосу
         window.onload = function() {
             updateApiKeyStatus();
             generateLessonPlan();
